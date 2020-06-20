@@ -17,10 +17,8 @@
 
 const facemesh = require('@tensorflow-models/facemesh');
 const Stats = require('stats.js');
-const tf = require('@tensorflow/tfjs');
 const TRIANGULATION = require('./triangulation');
-require('@tensorflow/tfjs-node')
-
+const tf = require('@tensorflow/tfjs-node-gpu');
 function isMobile() {
   const isAndroid = /Android/i.test(navigator.userAgent);
   const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -51,7 +49,6 @@ const mobile = isMobile();
 const renderPointcloud = mobile === false;
 const stats = new Stats();
 const state = {
-  backend: 'webgl',
   maxFaces: 1,
   triangulateMesh: true
 };
@@ -62,10 +59,6 @@ if (renderPointcloud) {
 
 function setupDatGui() {
   const gui = new dat.GUI();
-  gui.add(state, 'backend', ['webgl', 'node'])
-      .onChange(async backend => {
-        await tf.setBackend(backend);
-      });
 
   gui.add(state, 'maxFaces', 1, 20, 1).onChange(async val => {
     model = await facemesh.load({maxFaces: val});
@@ -161,7 +154,6 @@ async function renderPrediction() {
 };
 
 async function main() {
-  await tf.setBackend(state.backend);
   setupDatGui();
 
   stats.showPanel(0);  // 0: fps, 1: ms, 2: mb, 3+: custom

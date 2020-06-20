@@ -19,6 +19,7 @@ const facemesh = require('@tensorflow-models/facemesh');
 const Stats = require('stats.js');
 const tf = require('@tensorflow/tfjs');
 const TRIANGULATION = require('./triangulation');
+require('@tensorflow/tfjs-node')
 
 function isMobile() {
   const isAndroid = /Android/i.test(navigator.userAgent);
@@ -61,7 +62,7 @@ if (renderPointcloud) {
 
 function setupDatGui() {
   const gui = new dat.GUI();
-  gui.add(state, 'backend', ['webgl', 'cpu'])
+  gui.add(state, 'backend', ['webgl', 'node'])
       .onChange(async backend => {
         await tf.setBackend(backend);
       });

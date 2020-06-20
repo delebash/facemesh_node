@@ -18,18 +18,7 @@
 import * as facemesh from '@tensorflow-models/facemesh';
 import Stats from 'stats.js';
 import * as tf from '@tensorflow/tfjs';
-import * as tfjsWasm from '@tensorflow/tfjs-backend-wasm';
-
-//tf.setBackend('wasm');
-//tfjsWasm.setWasmPath('tfjs-backend-wasm')
-
-import {version} from '@tensorflow/tfjs-backend-wasm/dist/version';
-
 import {TRIANGULATION} from './triangulation';
-
-tfjsWasm.setWasmPath(
-    `https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@${
-        version}/dist/tfjs-backend-wasm.wasm`);
 
 function isMobile() {
   const isAndroid = /Android/i.test(navigator.userAgent);
@@ -61,7 +50,7 @@ const mobile = isMobile();
 const renderPointcloud = mobile === false;
 const stats = new Stats();
 const state = {
-  backend: 'wasm',
+  backend: 'webgl',
   maxFaces: 1,
   triangulateMesh: true
 };
@@ -72,7 +61,7 @@ if (renderPointcloud) {
 
 function setupDatGui() {
   const gui = new dat.GUI();
-  gui.add(state, 'backend', ['wasm', 'webgl', 'cpu'])
+  gui.add(state, 'backend', ['webgl', 'cpu'])
       .onChange(async backend => {
         await tf.setBackend(backend);
       });

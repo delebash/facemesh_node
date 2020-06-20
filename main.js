@@ -6,16 +6,15 @@ function createWindow () {
     width: 800,
     height: 600,
     webPreferences: {
-      nodeIntegration: true,
-      devTools: false
+      nodeIntegration: true
     }
   })
 
   // and load the index.html of the app.
-  win.loadFile('../build/index.html')
+  win.loadFile('./index.html')
 
   // Open the DevTools.
-  win.webContents.openDevTools()
+  //win.webContents.openDevTools()
 }
 
 // This method will be called when Electron has finished

@@ -15,10 +15,10 @@
  * =============================================================================
  */
 
-import * as facemesh from '@tensorflow-models/facemesh';
-import Stats from 'stats.js';
-import * as tf from '@tensorflow/tfjs';
-import {TRIANGULATION} from './triangulation';
+const facemesh = require('@tensorflow-models/facemesh');
+const Stats = require('stats.js');
+const tf = require('@tensorflow/tfjs');
+const TRIANGULATION = require('./triangulation');
 
 function isMobile() {
   const isAndroid = /Android/i.test(navigator.userAgent);

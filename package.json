@@ -2,28 +2,20 @@
   "name": "@tensorflow-models/facemesh",
   "version": "0.0.3",
   "description": "Pretrained facemesh model",
-  "main": "dist/index.js",
-  "jsnext:main": "dist/facemesh.esm.js",
-  "module": "dist/facemesh.esm.js",
-  "unpkg": "dist/facemesh.min.js",
-  "jsdelivr": "dist/facemesh.min.js",
-  "types": "dist/index.d.ts",
+  "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/delebash/facemesh.git"
+    "url": "https://github.com/delebash/facemesh_node.git"
   },
   "dependencies": {
     "@tensorflow-models/facemesh": "0.0.3",
     "@tensorflow/tfjs": "^2.0.1",
+    "electron": "^9.0.4",
     "stats.js": "^0.17.0"
   },
-  "devDependencies": {
-    "electron": "^9.0.4",
-    "snowpack": "^2.5.2"
-  },
+  "devDependencies": {},
   "scripts": {
-    "start": "electron src/main.js",
-    "build": "snowpack build"
+    "start": "electron main.js"
   },
   "license": "Apache-2.0"
 }

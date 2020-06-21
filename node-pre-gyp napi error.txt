@@ -1,0 +1,14 @@
+
+Hardcode return to whatever value the napi error is showing
+
+File location: node_modules>node-pre-gyp>lib>util>napi.js
+
+module.exports.get_napi_version = function(target) { // target may be undefined
+	// returns the non-zero numeric napi version or undefined if napi is not supported.
+	// correctly supporting target requires an updated cross-walk
+	var version = process.versions.napi; // can be undefined
+	if (!version) { // this code should never need to be updated
+		if (versionArray[0] === 9 && versionArray[1] >= 3) version = 2; // 9.3.0+
+		else if (versionArray[0] === 8) version = 1; // 8.0.0+
+	}
+	return 6;

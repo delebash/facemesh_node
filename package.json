@@ -9,12 +9,12 @@
   },
   "dependencies": {
     "@tensorflow-models/facemesh": "0.0.3",
-    "@tensorflow/tfjs-node": "^2.0.1",
     "@tensorflow/tfjs-node-gpu": "^2.0.1",
-    "electron": "^9.  0.4",
     "stats.js": "^0.17.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "electron": "^0.4.1"
+  },
   "scripts": {
     "start": "electron main.js"
   },
